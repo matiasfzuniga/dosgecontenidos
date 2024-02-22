@@ -1,0 +1,313 @@
+---
+import Social from "../components/Social.astro";
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Tsukimi+Rounded&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="header" id="inicio">
+      <img class="logo-gg" src="gg.png" alt="dosge" />
+      <div class="menu-toggle" id="mobile-menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
+
+    <div class="nav-container" id="nav-container">
+      <div class="close-btn">
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+      <nav class="nav" id="nav">
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#yo">Sobre mí</a></li>
+          <li><a href="/productos">Productos</a></li>
+          <li><a href="/bodas">Bodas</a></li>
+          <li><a href="/corporativos">Corporativos</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="social-icons">
+        <a
+          href="https://api.whatsapp.com/send?phone=2615322003"
+          target="_blank"
+          rel="noopener noreferrer"><img src="wp.svg" alt="Whatsapp" /></a
+        >
+        <a
+          href="https://facebook.com/dosgecontenidos"
+          target="_blank"
+          rel="noopener noreferrer"><img src="fb.svg" alt="Facebook" /></a
+        >
+        <a
+          href="https://instagram.com/dosgecontenidos"
+          target="_blank"
+          rel="noopener noreferrer"><img src="ig.svg" alt="Instagram" /></a
+        >
+      </div>
+      <img class="gg-menu" src="gg-menu.png" alt="logo" />
+    </div>
+    <div id="scrollDiv">
+      <Social />
+    </div>
+    <script>
+      window.addEventListener("scroll", function () {
+        let scrollDiv = document.getElementById("scrollDiv");
+        let scrollPosition = window.scrollY;
+        let windowWidth = window.innerWidth;
+
+        if (windowWidth < 768) {
+          if (scrollPosition >= 400 && scrollPosition <= 2500) {
+            scrollDiv.classList.add("show");
+          } else {
+            scrollDiv.classList.remove("show");
+          }
+        } else if (scrollPosition >= 200 && scrollPosition <= 1450) {
+          scrollDiv.classList.add("show");
+        } else {
+          scrollDiv.classList.remove("show");
+        }
+      });
+      document
+        .getElementById("mobile-menu")
+        .addEventListener("click", function () {
+          let navContainer = document.getElementById("nav-container");
+          navContainer.style.right =
+            navContainer.style.right === "0px" ? "-250px" : "0px";
+        });
+
+      document
+        .querySelector(".close-btn")
+        .addEventListener("click", function () {
+          let navContainer = document.getElementById("nav-container");
+          navContainer.style.right = "-250px";
+        });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        function scrollToSection(sectionId) {
+          let section = document.getElementById(sectionId);
+          section.scrollIntoView({
+            behavior: "smooth",
+          });
+        }
+
+        let navLinks = document.querySelectorAll(".nav a");
+
+        navLinks.forEach(function (link) {
+          link.addEventListener("click", function (event) {
+            let hrefValue = this.getAttribute("href");
+            if (hrefValue && hrefValue.charAt(0) === "#") {
+              event.preventDefault();
+              let sectionId = hrefValue.substring(1);
+              scrollToSection(sectionId);
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Josefin Sans", sans-serif;
+      font-weight: 500;
+    }
+    #scrollDiv {
+      opacity: 0;
+      visibility: hidden;
+      transition:
+        opacity 0.5s ease,
+        visibility 0.5s ease;
+      position: fixed;
+      top: 6%;
+      left: 93%;
+      transform: translate(-50%, -50%);
+      width: 140px;
+      padding: 2px;
+      background-color: #f1f1f1;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 999;
+      border-radius: 50px;
+    }
+
+    .nav-container .social-icons {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    #scrollDiv.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      padding-left: 45px;
+      padding-right: 45px;
+      padding-top: 20px;
+    }
+
+    .logo-gg {
+      width: 40px;
+      height: 40px;
+      padding: 15px;
+    }
+
+    .menu-toggle {
+      display: block;
+      cursor: pointer;
+      padding: 15px;
+    }
+
+    .bar {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background-color: #333;
+      margin: 5px 0;
+      transition: 0.4s;
+    }
+
+    .nav-container {
+      position: fixed;
+      top: 0;
+      right: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      transition: right 0.3s ease;
+      z-index: 1000;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    .close-btn span {
+      display: block;
+      width: 20px;
+      height: 3px;
+      background-color: #333;
+      transition: background-color 0.3s ease;
+      margin: 6px auto;
+    }
+    .close-btn span:nth-child(1) {
+      transform: rotate(45deg);
+      margin: 0;
+    }
+
+    .close-btn span:nth-child(2) {
+      transform: rotate(-45deg);
+      margin-top: -3px;
+    }
+    .close-btn:hover span {
+      background-color: #007bff;
+    }
+
+    .nav-container .nav {
+      text-align: center;
+    }
+
+    .nav-container .nav ul {
+      list-style: none;
+      padding: 100px 20px;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav-container .nav li {
+      margin: 10px 0;
+    }
+
+    .nav-container .nav a {
+      text-decoration: none;
+      color: #333;
+      font-family: "Montserrat", sans-serif;
+      font-weight: 500;
+      font-size: 16px;
+      transition: color 0.3s ease;
+    }
+
+    .nav-container .gg-menu {
+      margin-top: auto;
+      max-width: 50%;
+      height: auto;
+      padding-bottom: 20px;
+    }
+
+    .nav-container .nav a:hover {
+      color: #007bff;
+    }
+    @media screen and (max-width: 768px) {
+      .header {
+        padding-left: 4px;
+        padding-right: 4px;
+      }
+      .nav-container {
+        position: fixed;
+        top: 0;
+        right: -250px;
+        width: 250px;
+        height: 100%;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        transition: right 0.3s ease;
+        z-index: 1000;
+      }
+
+      .close-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        cursor: pointer;
+        z-index: 1001;
+      }
+
+      .nav ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .nav ul li {
+        margin-bottom: 10px;
+      }
+
+      .nav a {
+        transition: color 0.3s ease;
+      }
+
+      .nav a:hover {
+        color: #007bff;
+      }
+      #scrollDiv {
+        top: 6%;
+        left: 50%;
+      }
+    }
+  </style>
+</html>

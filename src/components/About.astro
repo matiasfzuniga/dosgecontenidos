@@ -1,0 +1,128 @@
+---
+import { Image } from "astro:assets";
+import perfil from "../images/perfil/gusti.jpg"
+---
+<div class="container" id="yo">
+  <div class="about-me-container">
+    <div class="about-me-text">
+      <h2>Sobre mí</h2>
+      <p>
+        Hola, soy Gustavo Gil, fotografo profesional apasionado por capturar la
+        autenticidad en bodas, productos y eventos corporativos. Cada imagen es
+        una historia visual que transmite emoción y creatividad.
+      </p>
+    </div>
+    <div class="about-me-image hidden" oncontextmenu="return false;">
+      <Image src={perfil} alt="fotoPerfil"/>
+    </div>
+  </div>
+  <div class="container-wrapper">
+    <span class="separator-line"></span>
+  </div>
+</div>
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          entry.isIntersecting
+            ? entry.target.classList.add("show")
+            : entry.target.classList.remove("show");
+        });
+      });
+      const hiddenElements = document.querySelectorAll(".hidden");
+      hiddenElements.forEach((i) => observer.observe(i));
+</script>
+<style>
+      .hidden {
+      opacity: 0;
+      transition: all 1s;
+      filter: blur(3px);
+    }
+    .show {
+      opacity: 1;
+      filter: blur(0);
+    }
+  .container {
+    background: linear-gradient(to bottom, #ffffff 0%, #f3f3f3 40%);
+    padding-top: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .about-me-container {
+    display: flex;
+    padding: 50px 50px;
+    width: 600px;
+  }
+  .container-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  .separator-line {
+    display: inline-block;
+    width: 500px;
+    height: 1px;
+    background-color: #ccc;
+  }
+  p {
+    color: #333;
+    font-style: italic;
+  }
+  .about-me-text {
+    flex: 1;
+    margin-right: 20px;
+    padding: 20px;
+    font-family: "Josefin Sans", sans-serif;
+    font-weight: 400;
+  }
+
+  .about-me-text h2 {
+    margin-bottom: 10px;
+    color: #333;   
+  }
+  .about-me-text p {
+    font-size: 19px;
+  }
+
+  .about-me-image {
+    width: 250px;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+  .about-me-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  @media screen and (max-width: 768px) {
+    .about-me-container {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+    }
+
+    .about-me-text {
+      margin-right: 0;
+    }
+    .separator-line {
+      display: inline-block;
+      width: 200px; 
+      height: 1px; 
+      background-color: #ccc; 
+    }
+    .hidden {
+      opacity: 0;
+      transition: all 1s;
+      filter: blur(5px);
+    }
+    .show {
+      opacity: 1;
+      filter: blur(0);
+    }
+  }
+</style>

@@ -1,0 +1,94 @@
+---
+import Social from "./Social.astro"
+import EmailForm from "./EmailForm"
+---
+<footer class="footer" id="contacto">
+  <div class="footer-content">
+    <h3 class="titulo">
+      <span>No dudes en consultar</span><br /> si tienes alguna pregunta o proyecto
+      en el que pueda ayudarte.
+    </h3>
+    <EmailForm client:load/>
+    <div style="padding-top: 40px;">
+    <Social/>
+  </div>
+  </div>
+  <div class="up-container">
+  <button class="up"><img src="up.svg" ></button></div>
+</footer>
+
+<style>
+  .footer {
+   background-color: #f3f3f3;
+    padding: 20px 0;
+    text-align: center;  
+  }
+  .footer-content {
+    max-width: 460px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 0;
+  }
+
+  .up-container{
+    position: relative;
+  }
+  .up {
+    position: absolute;
+    bottom: 30px;
+    right: 40px;
+    width: 20px;
+    height: 20px;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #090909;
+    font-size: 18px;
+    border-radius: 0.5em;
+    background: #f1f1f1;
+    cursor: pointer;
+    border: 1px solid #e8e8e8;
+    transition: all 0.3s;
+    box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+  }
+
+  
+  .up:active {
+    color: #666;
+  box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px #ffffff;
+  }
+  .titulo {
+    color: #333;
+    font-family: "Josefin Sans", sans-serif;
+    font-weight: 400;
+  }
+  .titulo span {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 19px;
+  }
+  @media screen and (max-width: 768px) {
+    .up-container{
+    display: none;
+  }
+    }
+</style>
+<script>
+  function scrollToTop() {
+      const inicioElement = document.getElementById('inicio');
+      if (inicioElement) {
+        inicioElement.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+  const button = document.querySelectorAll('button.up');
+  button.forEach((button) => {
+    button.addEventListener('click', () => {
+      scrollToTop()
+    })
+  })
+
+</script>

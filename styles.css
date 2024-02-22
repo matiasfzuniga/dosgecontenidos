@@ -1,0 +1,91 @@
+/* form */
+
+  .enviar {
+    color: #333;
+    font-weight: 700;
+    font-size: 0.75rem;
+    border-radius: 5px;
+    background: #f3f3f3;
+    border: 1px #616161 solid;
+    margin-top: 15px;
+    padding: 8px;
+  }
+
+  .coolinput {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    position: static;
+    max-width: 240px;
+  }
+  .coolinput label.text {
+    font-size: 0.75rem;
+    color: #333;
+    font-weight: 700;
+    position: relative;
+    top: 0.5rem;
+    margin: 0 0 0 7px;
+    padding: 0 3px;
+    background: #f3f3f3;
+    width: fit-content;
+    
+  }
+
+  .coolinput input[type="text"].input {
+    padding: 11px 10px;
+    font-size: 1rem;
+    border: 1px #616161 solid;
+    border-radius: 5px;
+    background: #f3f3f3;
+    font-family: "Josefin Sans", sans-serif;
+  }
+
+  .coolinput input[type="text"].input:focus {
+    outline: none;
+  }
+
+  .coolinput input[type="email"].input {
+    padding: 11px 10px;
+    font-size: 1rem;
+    border: 1px #616161 solid;
+    border-radius: 5px;
+    background: #f3f3f3;
+    font-family: "Josefin Sans", sans-serif;
+  }
+
+  .coolinput input[type="email"].input:focus {
+    outline: none;
+  }
+
+  .coolinput textarea {
+    padding: 11px 10px;
+    font-size: 1rem;
+    border: 1px #616161 solid;
+    border-radius: 5px;
+    background: #f3f3f3;
+    resize: none;
+    font-family: "Josefin Sans", sans-serif;
+  }
+
+  .coolinput textarea:focus {
+    outline: none;
+  }
+
+  @media screen and (max-width: 768px) {
+   .titulo {
+    padding: 2px 40px;
+   }
+   .enviar{
+    padding: 10px;
+    font-size: 0.85rem;
+   }
+   .coolinput label.text {
+    font-size: 0.85rem;
+    }
+  .up {
+   display: none;
+  }
+  .social-icons{
+    padding-top: 20px;
+  }
+}

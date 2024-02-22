@@ -1,0 +1,221 @@
+---
+import Card from "../components/Card.astro";
+import Footer from "../components/Footer.astro";
+import Layout from "../layouts/Layout.astro";
+import About from "../components/About.astro";
+import portada1 from "../images/portada/p1.jpg";
+import portada2 from "../images/portada/p2.jpg";
+import portada3 from "../images/portada/p3.jpg";
+import portada4 from "../images/portada/p4.jpg";
+import portada5 from "../images/portada/p5.jpg";
+import portada6 from "../images/portada/p6.jpg";
+import opcion1 from "../images/opciones/b1.jpg";
+import opcion2 from "../images/opciones/b2.jpg";
+import opcion3 from "../images/opciones/b3.jpg";
+import { Image } from "astro:assets";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Dosge Contenidos</title>
+  </head>
+  <body class="container" id="draggableImage">
+    <Layout />
+    <div class="gallery hidden">
+      <Card href={portada1} alt="portadaUno" width="500" height="500"/>
+      <Card href={portada2} alt="portadaDos" width="500" height="500" />
+      <Card href={portada6} alt="portadaSeis" width="500" height="500" />
+      <Card href={portada3} alt="portadaTres" width="500" height="500" />
+      <Card href={portada5} alt="portadaCinco" width="500" height="500" />
+      <Card href={portada4} alt="portadaCuatro" width="500" height="500" />
+    </div>
+    <About />
+    <div class="options" style="height:93vh; width:100%">
+      <h2 class="servicios">Descubre Nuestros Servicios</h2>
+      <a href="/productos" class="productos hidden">
+        <h1 style="position: absolute; z-index: 1; color: #fff;">PRODUCTOS</h1>
+        <div class="overlay"></div>
+        <Image src={opcion1} alt="productos" class="imageOptions" width={1500} height={1500}/>
+      </a>
+      <a href="/corporativos" class="corporativos hidden">
+        <h1 style="position: absolute; z-index: 1; color: #fff;">
+          CORPORATIVOS
+        </h1>
+        <div class="overlay"></div>
+        <Image
+          src={opcion3}
+          alt="corporativos"
+          class="imageOptions"
+          style="object-position:center 45%;"
+          width={1500}
+          height={1500}
+        />
+      </a>
+      <a href="/bodas" class="bodas hidden">
+        <h1 style="position: absolute; z-index: 1; color: #fff;">BODAS</h1>
+        <div class="overlay"></div>
+        <Image
+          src={opcion2}
+          alt="bodas"
+          class="imageOptions"
+          style="object-position:center 28%;"
+        />
+      </a>
+    </div>
+
+    <Footer />
+    <script>
+      const draggableImage = document.getElementById("draggableImage");
+      draggableImage.addEventListener("dragstart", function (event) {
+        event.preventDefault();
+      });
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          entry.isIntersecting
+            ? entry.target.classList.add("show")
+            : entry.target.classList.remove("show");
+        });
+      });
+      const hiddenElements = document.querySelectorAll(".hidden");
+      hiddenElements.forEach((i) => observer.observe(i));
+    </script>
+  </body>
+  <style>
+    .container {
+      background: linear-gradient(to right, #ffffff 50%, #f3f3f3 50%);
+    }
+    .servicios {
+      font-size: 2.3em;
+      height: 14vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      letter-spacing: 2px;
+      color: #333;
+      background-color: #f8f8f8;
+      padding: 1px;
+      font-family: "Josefin Sans", sans-serif;
+      font-weight: 300;
+    }
+    .hidden {
+      opacity: 0;
+      transition: all 1s;
+    }
+    .show {
+      opacity: 1;
+    }
+    .gallery {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 0px 20px 50px 20px;
+    }
+    .options {
+      height: 93vh;
+      width: 100%;
+    }
+
+    .options {
+      height: 93vh;
+      width: 100%;
+    }
+    .imageOptions {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 60%;
+    }
+    .overlay {
+      position: absolute;
+      width: 100%;
+      height: 85%;
+      background: linear-gradient(
+        to top,
+        transparent 0%,
+        rgba(0, 0, 0, 0.4) 18%,
+        rgba(0, 0, 0, 0.7) 30%,
+        rgba(0, 0, 0, 0.7) 65%,
+        rgba(0, 0, 0, 0.4) 85%,
+        transparent 100%
+      );
+      transition: opacity 0.5s;
+      opacity: 0.6;
+    }
+    .options h1 {
+      position: relative;
+      z-index: 1;
+    }
+    .productos:hover .overlay,
+    .corporativos:hover .overlay,
+    .bodas:hover .overlay {
+      opacity: 0.2;
+    }
+
+    @media screen and (max-width: 768px) {
+      .options a h1 {
+        font-size: 2em;
+      }
+      .servicios {
+        font-size: 1.4em;
+        font-weight: 400;
+      }
+
+      .container {
+        background: #ffffff;
+      }
+      .overlay {
+        opacity: 0.8;
+      }
+    }
+
+    .productos {
+      height: 25vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      text-align: center;
+      transition: all 0.5s;
+      margin: 5px 0px;
+    }
+    .corporativos {
+      height: 25vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      text-align: center;
+      transition: all 0.5s;
+      margin: 5px 0px;
+    }
+    .bodas {
+      height: 25vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      text-align: center;
+      transition: all 0.5s;
+      margin: 5px 0px;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    h1 {
+      font-family: "Tsukimi Rounded", sans-serif;
+      font-weight: 700;
+      font-style: normal;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+      opacity: 1;
+      transition: opacity 0.3s ease;
+    }
+  </style>
+</html>

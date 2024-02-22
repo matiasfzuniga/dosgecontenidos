@@ -1,0 +1,250 @@
+---
+import "photoswipe/style.css";
+import { Image } from "astro:assets";
+import uno from "../images/boda/1.jpg"
+import dos from "../images/boda/2.jpg"
+import tres from "../images/boda/3.jpg"
+import cuatro from "../images/boda/4.jpg"
+import cinco from "../images/boda/5.jpg"
+import seis from "../images/boda/6.jpg"
+import siete from "../images/boda/7.jpg"
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Tsukimi+Rounded&display=swap"
+      rel="stylesheet"
+    />
+    <title>bodas</title>
+    <style>
+      .grid-gallery {
+        max-width: 1340px;
+        margin: 0 auto;
+        padding-top: 10px;
+      }
+
+      .media-wrap {
+        display: grid;
+        grid-template-columns: 1fr 20% 25% 25%;
+        grid-template-rows: 250px 250px 250px;
+        grid-gap: 18px;
+        flex: 1;
+        grid-template-areas:
+          "uno uno  tres cuatro "
+          "dos   cinco cinco    cinco"
+          "dos seis   seis seis";
+      }
+
+      @media screen and (max-width: 767px) {
+        .media-wrap {
+          grid-template-rows: 150px 180px 200px 160px 225px 160px;
+          grid-template-columns: 1fr;
+          grid-template-areas:
+            "uno"
+            "tres"
+            " cuatro "
+            " cinco "
+            " dos"
+            " seis";
+        }
+      }
+
+      .uno {
+        grid-area: uno;
+        width: 100%;
+        object-position: 50% 68%;
+      }
+
+      .dos {
+        grid-area: dos;
+        width: 100%;
+      }
+
+      .tres {
+        grid-area: tres;
+        width: 100%;
+      }
+
+      .cuatro {
+        grid-area: cuatro;
+        width: 100%;
+      }
+
+      .cinco {
+        grid-area: cinco;
+        width: 100%;
+      }
+      .cinco .item {
+        object-position: 50% 48%;
+      }
+      .seis {
+        grid-area: seis;
+        display: flex;
+        gap: 18px;
+      }
+      
+
+      .container-prod {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .container-prod h1 {
+        text-transform: uppercase;
+        font-family: "Josefin Sans", sans-serif;
+      }
+      .back-arrow {
+        color: #3f3f3f;
+        font-size: 24px;
+        cursor: pointer;
+        padding-left: 15px;
+      }
+      .logo-gg {
+        width: 40px;
+        height: 40px;
+        padding: 15px;
+      }
+      .item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        overflow: hidden;
+      }
+
+      .gallery-2 {
+        max-width: 1340px;
+        margin: 0 auto;
+        padding-top: 10px;
+      }
+      .media-2 {
+        display: grid;
+        grid-gap: 18px;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      }
+    </style>
+  </head>
+
+  <body class="container" oncontextmenu="return false;">
+    <div class="container-prod">
+      <div class="back-arrow" onclick="window.location.href='/'">&#8592;</div>
+      <a href="/"> <img class="logo-gg" src="/gg.png" alt="dosge" /></a>
+    </div>
+    <div class="grid-gallery" id="gallery">
+      <div class="media-wrap">
+        <a
+          class="item uno"
+          href={"/boda/1.jpg"}
+          data-pswp-width="2500"
+          data-pswp-height="1666"
+          target="_blank"
+        >
+        <Image src={uno} alt="fotoUno" class="item"/>
+        </a>
+        <a
+          class="item dos"
+          href="/boda/2.jpg"
+          data-pswp-width="1669"
+          data-pswp-height="2500"
+          target="_blank"
+        >
+        <Image src={dos} alt="fotoDos" class="item"/>
+        </a>
+        <a
+          class="item tres"
+          href="/boda/3.jpg"
+          data-pswp-width="2500"
+          data-pswp-height="1666"
+          target="_blank"
+        >
+        <Image src={tres} alt="fotoTres" class="item"/>
+        </a>
+        <a
+          class="item cuatro"
+          href="/boda/4.jpg"
+          data-pswp-width="2500"
+          data-pswp-height="1666"
+          target="_blank"
+        >
+        <Image src={cuatro} alt="fotoCuatro" class="item"/>
+        </a>
+        <a
+          class="item cinco"
+          href="/boda/5.jpg"
+          data-pswp-width="2500"
+          data-pswp-height="1666"
+          target="_blank"
+        >
+        <Image src={cinco} alt="fotoCinco" class="item"/>
+        </a>
+        <div class="item seis">
+          <a
+            class="item seis"
+            href="/boda/6.jpg"
+            data-pswp-width="2500"
+            data-pswp-height="1666"
+            target="_blank"
+          >
+          <Image src={seis} alt="fotoSeis" class="item"/>
+          </a>
+          <a
+            class="item seis"
+            href="/boda/7.jpg"
+            data-pswp-width="2500"
+            data-pswp-height="1666"
+            target="_blank"
+          >
+          <Image src={siete} alt="fotoSiete" class="item"/>
+          </a>
+        </div>
+      </div>
+      <div class="gallery-2">
+        <div class="media-2">
+          {
+            Array.from({ length: 90 }).map((_, i) => (
+              <a
+                href={`/boda/galeria/${i + 1}.jpg`}
+                target="_blank"
+                data-pswp-width="2500"
+                data-pswp-height="1666"
+                id={`${i + 1}`}
+              >
+              <Image src={`/boda/galeria/${i + 1}.jpg`} alt="fotoGaleria" class="item" width={500} height={500}/>
+               
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+    <script>
+      import PhotoSwipeLightbox from "photoswipe/lightbox";
+      const lightbox = new PhotoSwipeLightbox({
+        gallery: "#gallery",
+        children: "a",
+        pswpModule: () => import("photoswipe"),
+      });
+      lightbox.init();
+
+      let elementId = ["30", "45", "63", "65", "81"];
+      elementId.forEach((id) => {
+        let element = document.getElementById(id);
+        if (element) {
+          element.setAttribute("data-pswp-width", "1669");
+          element.setAttribute("data-pswp-height", "2500");
+        }
+      });
+    </script>
+  </body>
+</html>
