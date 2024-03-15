@@ -95,6 +95,13 @@ import Social from "../components/Social.astro";
           navContainer.style.right = "-250px";
         });
 
+        document.querySelector(".container").addEventListener("click", function (event) { 
+          const targetElement = event.target as Element;
+          if (!targetElement.closest('.nav-container') && !targetElement.closest('#mobile-menu')) {
+            let navContainer = document.getElementById("nav-container");
+            navContainer.style.right = "-250px";
+          }
+        })
       document.addEventListener("DOMContentLoaded", function () {
         function scrollToSection(sectionId) {
           let section = document.getElementById(sectionId);
